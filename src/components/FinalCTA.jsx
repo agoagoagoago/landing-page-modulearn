@@ -14,20 +14,29 @@ export default function FinalCTA() {
     setError('')
 
     const formData = new FormData(e.target)
-    formData.append('access_key', WEB3FORMS_KEY)
-    formData.append('subject', 'New ModuLearn Diagnostic Session Request')
-    formData.append('from_name', 'The Learning Cave Website')
-    formData.append('ccemail', 'jordongoh@gmail.com')
+    const payload = {
+      access_key: WEB3FORMS_KEY,
+      subject: 'New ModuLearn Diagnostic Session Request',
+      from_name: 'The Learning Cave Website',
+      ccemail: 'jordongoh@gmail.com',
+      'Parent Name': formData.get('Parent Name'),
+      'Contact Number': formData.get('Contact Number'),
+      'Student Level': formData.get('Student Level'),
+      'Subject Needed': formData.get('Subject Needed'),
+      Message: formData.get('Message'),
+    }
 
     try {
       const res = await fetch('https://api.web3forms.com/submit', {
         method: 'POST',
-        body: formData,
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(payload),
       })
       const data = await res.json()
       if (data.success) {
         setSubmitted(true)
       } else {
+        console.error('Web3Forms error:', data)
         setError('Something went wrong. Please try again or WhatsApp us directly.')
       }
     } catch {
