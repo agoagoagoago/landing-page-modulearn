@@ -1,12 +1,39 @@
 import { useState } from 'react'
 import { Send, ArrowRight } from 'lucide-react'
 
+const WEB3FORMS_KEY = 'af87e3ee-082e-4628-8849-2e9832c75b0a'
+
 export default function FinalCTA() {
   const [submitted, setSubmitted] = useState(false)
+  const [submitting, setSubmitting] = useState(false)
+  const [error, setError] = useState('')
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault()
-    setSubmitted(true)
+    setSubmitting(true)
+    setError('')
+
+    const formData = new FormData(e.target)
+    formData.append('access_key', WEB3FORMS_KEY)
+    formData.append('subject', 'New ModuLearn Diagnostic Session Request')
+    formData.append('from_name', 'The Learning Cave Website')
+
+    try {
+      const res = await fetch('https://api.web3forms.com/submit', {
+        method: 'POST',
+        body: formData,
+      })
+      const data = await res.json()
+      if (data.success) {
+        setSubmitted(true)
+      } else {
+        setError('Something went wrong. Please try again or WhatsApp us directly.')
+      }
+    } catch {
+      setError('Network error. Please try again or WhatsApp us directly.')
+    } finally {
+      setSubmitting(false)
+    }
   }
 
   return (
@@ -68,6 +95,7 @@ export default function FinalCTA() {
                     <label htmlFor="parent-name" className="block text-sm font-medium text-navy-700 mb-1">Parent&rsquo;s Name</label>
                     <input
                       id="parent-name"
+                      name="Parent Name"
                       type="text"
                       required
                       className="w-full px-3.5 sm:px-4 py-2.5 sm:py-3 rounded-xl border border-navy-200 focus:border-emerald-500 focus:ring-2 focus:ring-emerald-500/20 outline-none transition text-navy-900 text-base"
@@ -78,6 +106,7 @@ export default function FinalCTA() {
                     <label htmlFor="contact" className="block text-sm font-medium text-navy-700 mb-1">Contact Number</label>
                     <input
                       id="contact"
+                      name="Contact Number"
                       type="tel"
                       required
                       className="w-full px-3.5 sm:px-4 py-2.5 sm:py-3 rounded-xl border border-navy-200 focus:border-emerald-500 focus:ring-2 focus:ring-emerald-500/20 outline-none transition text-navy-900 text-base"
@@ -88,6 +117,7 @@ export default function FinalCTA() {
                     <label htmlFor="level" className="block text-sm font-medium text-navy-700 mb-1">Student&rsquo;s Level</label>
                     <select
                       id="level"
+                      name="Student Level"
                       required
                       className="w-full px-3.5 sm:px-4 py-2.5 sm:py-3 rounded-xl border border-navy-200 focus:border-emerald-500 focus:ring-2 focus:ring-emerald-500/20 outline-none transition text-navy-900 bg-white text-base"
                     >
@@ -103,6 +133,7 @@ export default function FinalCTA() {
                     <label htmlFor="subject" className="block text-sm font-medium text-navy-700 mb-1">Subject(s) Needed</label>
                     <select
                       id="subject"
+                      name="Subject Needed"
                       required
                       className="w-full px-3.5 sm:px-4 py-2.5 sm:py-3 rounded-xl border border-navy-200 focus:border-emerald-500 focus:ring-2 focus:ring-emerald-500/20 outline-none transition text-navy-900 bg-white text-base"
                     >
@@ -116,17 +147,22 @@ export default function FinalCTA() {
                     <label htmlFor="message" className="block text-sm font-medium text-navy-700 mb-1">Anything else we should know?</label>
                     <textarea
                       id="message"
+                      name="Message"
                       rows="2"
                       className="w-full px-3.5 sm:px-4 py-2.5 sm:py-3 rounded-xl border border-navy-200 focus:border-emerald-500 focus:ring-2 focus:ring-emerald-500/20 outline-none transition text-navy-900 resize-none text-base sm:rows-3"
                       placeholder="e.g. Current grade, target grade..."
                     />
                   </div>
+                  {error && (
+                    <p className="text-red-500 text-sm text-center">{error}</p>
+                  )}
                   <button
                     type="submit"
-                    className="w-full bg-emerald-500 hover:bg-emerald-600 text-white py-3 sm:py-3.5 rounded-xl font-semibold transition-colors flex items-center justify-center gap-2 text-sm sm:text-base"
+                    disabled={submitting}
+                    className="w-full bg-emerald-500 hover:bg-emerald-600 disabled:bg-emerald-400 disabled:cursor-not-allowed text-white py-3 sm:py-3.5 rounded-xl font-semibold transition-colors flex items-center justify-center gap-2 text-sm sm:text-base"
                   >
-                    Schedule Your Diagnostic Trial Now
-                    <ArrowRight className="h-4 w-4 sm:h-5 sm:w-5" />
+                    {submitting ? 'Sending...' : 'Schedule Your Diagnostic Trial Now'}
+                    {!submitting && <ArrowRight className="h-4 w-4 sm:h-5 sm:w-5" />}
                   </button>
                 </form>
               </>
