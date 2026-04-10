@@ -56,16 +56,16 @@ const modulearnItems = [
 
 export default function Problem() {
   return (
-    <section id="problem" className="py-16 md:py-24 bg-navy-50">
+    <section id="problem" className="py-12 sm:py-16 md:py-24 bg-navy-50">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center max-w-3xl mx-auto mb-6">
-          <span className="inline-block text-emerald-600 font-semibold text-sm tracking-widest uppercase mb-3">
+        <div className="text-center max-w-3xl mx-auto mb-4 sm:mb-6">
+          <span className="inline-block text-emerald-600 font-semibold text-xs sm:text-sm tracking-widest uppercase mb-2 sm:mb-3">
             The Uncomfortable Truth
           </span>
-          <h2 className="text-3xl sm:text-4xl font-bold text-navy-900 leading-tight">
+          <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-navy-900 leading-tight">
             Your child&rsquo;s tuition is <span className="text-red-500">probably failing them</span>.
           </h2>
-          <p className="mt-4 text-navy-500 text-lg">
+          <p className="mt-3 sm:mt-4 text-navy-500 text-base sm:text-lg">
             Singapore parents spend an average of <strong className="text-navy-800">$4,400 per year</strong> on tuition.
             Yet most centres can&rsquo;t tell you which specific topics your child has mastered and which they haven&rsquo;t.
             That&rsquo;s not education — it&rsquo;s guesswork dressed up as help.
@@ -73,31 +73,31 @@ export default function Problem() {
         </div>
 
         {/* Pull quote */}
-        <div className="max-w-2xl mx-auto text-center mb-14">
-          <p className="text-navy-400 italic text-base">
+        <div className="max-w-2xl mx-auto text-center mb-10 sm:mb-14">
+          <p className="text-navy-400 italic text-sm sm:text-base">
             &ldquo;If your tutor can&rsquo;t show you a real-time breakdown of every concept your child
             has and hasn&rsquo;t mastered — what exactly are you paying for?&rdquo;
           </p>
         </div>
 
-        <div className="grid md:grid-cols-2 gap-8 max-w-6xl mx-auto">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-5 sm:gap-8 max-w-6xl mx-auto">
           {/* Traditional */}
-          <div className="bg-white rounded-2xl p-8 border border-red-200 shadow-sm relative overflow-hidden">
+          <div className="bg-white rounded-2xl p-5 sm:p-8 border border-red-200 shadow-sm relative overflow-hidden">
             <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-red-400 to-red-500" />
-            <div className="flex items-center gap-3 mb-2">
-              <div className="w-10 h-10 bg-red-100 rounded-lg flex items-center justify-center">
-                <AlertTriangle className="h-5 w-5 text-red-500" />
+            <div className="flex items-center gap-2.5 sm:gap-3 mb-2">
+              <div className="w-9 h-9 sm:w-10 sm:h-10 bg-red-100 rounded-lg flex items-center justify-center shrink-0">
+                <AlertTriangle className="h-4 w-4 sm:h-5 sm:w-5 text-red-500" />
               </div>
-              <h3 className="text-xl font-bold text-navy-900">Traditional Tuition</h3>
+              <h3 className="text-lg sm:text-xl font-bold text-navy-900">Traditional Tuition</h3>
             </div>
-            <p className="text-sm text-red-400 font-medium mb-6 ml-[52px]">Where most of your money goes to waste</p>
-            <ul className="space-y-5">
+            <p className="text-xs sm:text-sm text-red-400 font-medium mb-4 sm:mb-6 ml-[46px] sm:ml-[52px]">Where most of your money goes to waste</p>
+            <ul className="space-y-4 sm:space-y-5">
               {traditionalItems.map((item) => (
-                <li key={item.bold} className="flex items-start gap-3">
-                  <X className="h-5 w-5 text-red-400 mt-0.5 shrink-0" />
+                <li key={item.bold} className="flex items-start gap-2.5 sm:gap-3">
+                  <X className="h-4 w-4 sm:h-5 sm:w-5 text-red-400 mt-0.5 shrink-0" />
                   <div>
-                    <span className="font-semibold text-navy-800">{item.bold}</span>
-                    <p className="text-sm text-navy-500 mt-0.5">{item.text}</p>
+                    <span className="font-semibold text-navy-800 text-sm sm:text-base">{item.bold}</span>
+                    <p className="text-xs sm:text-sm text-navy-500 mt-0.5">{item.text}</p>
                   </div>
                 </li>
               ))}
@@ -105,22 +105,22 @@ export default function Problem() {
           </div>
 
           {/* ModuLearn */}
-          <div className="bg-white rounded-2xl p-8 border border-emerald-200 shadow-sm relative overflow-hidden">
+          <div className="bg-white rounded-2xl p-5 sm:p-8 border border-emerald-200 shadow-sm relative overflow-hidden">
             <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-emerald-400 to-emerald-500" />
-            <div className="flex items-center gap-3 mb-2">
-              <div className="w-10 h-10 bg-emerald-100 rounded-lg flex items-center justify-center">
-                <Zap className="h-5 w-5 text-emerald-500" />
+            <div className="flex items-center gap-2.5 sm:gap-3 mb-2">
+              <div className="w-9 h-9 sm:w-10 sm:h-10 bg-emerald-100 rounded-lg flex items-center justify-center shrink-0">
+                <Zap className="h-4 w-4 sm:h-5 sm:w-5 text-emerald-500" />
               </div>
-              <h3 className="text-xl font-bold text-navy-900">The ModuLearn Way</h3>
+              <h3 className="text-lg sm:text-xl font-bold text-navy-900">The ModuLearn Way</h3>
             </div>
-            <p className="text-sm text-emerald-500 font-medium mb-6 ml-[52px]">Every dollar works because every lesson is tracked</p>
-            <ul className="space-y-5">
+            <p className="text-xs sm:text-sm text-emerald-500 font-medium mb-4 sm:mb-6 ml-[46px] sm:ml-[52px]">Every dollar works because every lesson is tracked</p>
+            <ul className="space-y-4 sm:space-y-5">
               {modulearnItems.map((item) => (
-                <li key={item.bold} className="flex items-start gap-3">
-                  <Check className="h-5 w-5 text-emerald-500 mt-0.5 shrink-0" />
+                <li key={item.bold} className="flex items-start gap-2.5 sm:gap-3">
+                  <Check className="h-4 w-4 sm:h-5 sm:w-5 text-emerald-500 mt-0.5 shrink-0" />
                   <div>
-                    <span className="font-semibold text-navy-800">{item.bold}</span>
-                    <p className="text-sm text-navy-500 mt-0.5">{item.text}</p>
+                    <span className="font-semibold text-navy-800 text-sm sm:text-base">{item.bold}</span>
+                    <p className="text-xs sm:text-sm text-navy-500 mt-0.5">{item.text}</p>
                   </div>
                 </li>
               ))}

@@ -23,27 +23,27 @@ const testimonials = [
 
 export default function Trust() {
   return (
-    <section id="tutor" className="py-16 md:py-24 bg-navy-50">
+    <section id="tutor" className="py-12 sm:py-16 md:py-24 bg-navy-50">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Tutor profile */}
-        <div className="max-w-4xl mx-auto mb-20">
-          <div className="bg-white rounded-2xl p-8 md:p-10 border border-navy-100 shadow-sm">
-            <div className="flex flex-col md:flex-row gap-8 items-center md:items-start">
+        <div className="max-w-4xl mx-auto mb-14 sm:mb-20">
+          <div className="bg-white rounded-2xl p-5 sm:p-8 md:p-10 border border-navy-100 shadow-sm">
+            <div className="flex flex-col md:flex-row gap-5 sm:gap-8 items-center md:items-start">
               <img
                 src="/kenneth.avif"
                 alt="Kenneth Ng — Tutor at The Learning Cave"
-                className="w-32 h-32 rounded-2xl object-cover shrink-0"
+                className="w-24 h-24 sm:w-32 sm:h-32 rounded-2xl object-cover shrink-0"
               />
 
-              <div>
-                <span className="inline-block text-emerald-600 font-semibold text-sm tracking-widest uppercase mb-2">
+              <div className="text-center md:text-left">
+                <span className="inline-block text-emerald-600 font-semibold text-xs sm:text-sm tracking-widest uppercase mb-1.5 sm:mb-2">
                   Your Tutor
                 </span>
-                <h2 className="text-2xl sm:text-3xl font-bold text-navy-900 mb-1">Kenneth Ng</h2>
-                <p className="text-emerald-600 font-medium mb-4">
+                <h2 className="text-xl sm:text-2xl md:text-3xl font-bold text-navy-900 mb-1">Kenneth Ng</h2>
+                <p className="text-emerald-600 font-medium text-sm sm:text-base mb-3 sm:mb-4">
                   NUS Master&rsquo;s in Electrical Engineering
                 </p>
-                <div className="space-y-3 text-navy-600 leading-relaxed">
+                <div className="space-y-2.5 sm:space-y-3 text-navy-600 text-sm sm:text-base leading-relaxed">
                   <p>
                     With over <strong>12 years of specialised experience</strong> in JC and Secondary Math & Physics,
                     Kenneth has helped more than 220 students systematically bridge the gap between their current grades
@@ -56,11 +56,11 @@ export default function Trust() {
                   </p>
                 </div>
 
-                <div className="flex flex-wrap gap-3 mt-6">
+                <div className="flex flex-wrap justify-center md:justify-start gap-2 sm:gap-3 mt-4 sm:mt-6">
                   {['H2 Math', 'H2 Physics', 'O-Level E/A Math', 'O-Level Physics', 'IP Programme'].map((tag) => (
                     <span
                       key={tag}
-                      className="bg-navy-50 text-navy-700 text-xs font-semibold px-3 py-1.5 rounded-full border border-navy-200"
+                      className="bg-navy-50 text-navy-700 text-[11px] sm:text-xs font-semibold px-2.5 sm:px-3 py-1 sm:py-1.5 rounded-full border border-navy-200"
                     >
                       {tag}
                     </span>
@@ -72,33 +72,33 @@ export default function Trust() {
         </div>
 
         {/* Testimonials */}
-        <div className="text-center mb-12">
-          <span className="inline-block text-emerald-600 font-semibold text-sm tracking-widest uppercase mb-3">
+        <div className="text-center mb-8 sm:mb-12">
+          <span className="inline-block text-emerald-600 font-semibold text-xs sm:text-sm tracking-widest uppercase mb-2 sm:mb-3">
             Success Stories
           </span>
-          <h2 className="text-3xl sm:text-4xl font-bold text-navy-900">
+          <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-navy-900">
             Real results from <span className="text-emerald-500">real families</span>
           </h2>
         </div>
 
-        <div className="grid md:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-5 sm:gap-8">
           {testimonials.map((t) => (
-            <div key={t.name} className="bg-white rounded-2xl p-8 border border-navy-100 shadow-sm flex flex-col">
-              <Quote className="h-8 w-8 text-emerald-200 mb-4" />
-              <p className="text-navy-600 leading-relaxed flex-1">&ldquo;{t.quote}&rdquo;</p>
-              <div className="mt-6 pt-6 border-t border-navy-100">
-                <div className="flex items-center justify-between">
+            <div key={t.name} className="bg-white rounded-2xl p-5 sm:p-8 border border-navy-100 shadow-sm flex flex-col">
+              <Quote className="h-6 w-6 sm:h-8 sm:w-8 text-emerald-200 mb-3 sm:mb-4" />
+              <p className="text-sm sm:text-base text-navy-600 leading-relaxed flex-1">&ldquo;{t.quote}&rdquo;</p>
+              <div className="mt-4 sm:mt-6 pt-4 sm:pt-6 border-t border-navy-100">
+                <div className="flex items-center justify-between gap-3">
                   <div>
-                    <p className="font-semibold text-navy-900">{t.name}</p>
-                    <p className="text-sm text-navy-400">{t.detail}</p>
+                    <p className="font-semibold text-navy-900 text-sm sm:text-base">{t.name}</p>
+                    <p className="text-xs sm:text-sm text-navy-400">{t.detail}</p>
                   </div>
-                  <div className="bg-emerald-100 text-emerald-700 font-bold text-sm px-3 py-1 rounded-lg">
+                  <div className="bg-emerald-100 text-emerald-700 font-bold text-xs sm:text-sm px-2.5 sm:px-3 py-1 rounded-lg whitespace-nowrap">
                     {t.grade}
                   </div>
                 </div>
-                <div className="flex gap-0.5 mt-3">
+                <div className="flex gap-0.5 mt-2.5 sm:mt-3">
                   {[...Array(5)].map((_, i) => (
-                    <Star key={i} className="h-4 w-4 text-gold-400 fill-gold-400" />
+                    <Star key={i} className="h-3.5 w-3.5 sm:h-4 sm:w-4 text-gold-400 fill-gold-400" />
                   ))}
                 </div>
               </div>
