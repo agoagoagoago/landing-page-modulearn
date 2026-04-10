@@ -17,6 +17,7 @@ export default function FinalCTA() {
     formData.append('access_key', WEB3FORMS_KEY)
     formData.append('subject', 'New ModuLearn Diagnostic Session Request')
     formData.append('from_name', 'The Learning Cave Website')
+    formData.append('ccemail', 'jordongoh@gmail.com')
 
     try {
       const res = await fetch('https://api.web3forms.com/submit', {
